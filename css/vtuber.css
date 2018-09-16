@@ -1,0 +1,24 @@
+
+body,html {
+    width:100%;
+    height:100%;
+    margin: 0px;
+    padding: 0px;
+}
+.container {
+    width:100%;
+    height:100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+#chara {
+    display: inline-block;
+    width: 30%;
+    padding: 0px;
+    margin: 0px;
+    margin: auto;
+}
+#chara img{
+    width: 100%;
+}
