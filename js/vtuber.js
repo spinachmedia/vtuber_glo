@@ -72,10 +72,18 @@ var startAnimation = function(){
 }
 
 var setupMicrophone = function(){
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 navigator.getUserMedia(
 	{audio : true},
 	function(stream){
-		document.querySelector('audio').src = URL.createObjectURL(stream);
+		var audioElem = document.querySelector('audio');
+		if ('srcObject' in audioElem) {
+			// 最近のブラウザ向け
+			audioElem.srcObject = stream;
+		} else {
+			// 昔のブラウザ向け
+			audioElem.src = URL.createObjectURL(stream);
+		}
 		var audioContext = new AudioContext();
 		var analyser = audioContext.createAnalyser();
 		var timeDomain = new Float32Array(analyser.frequencyBinCount);
